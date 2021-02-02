@@ -5,12 +5,14 @@ import {
   QueryDefinition,
   TypeInfo,
   ImportedQueryDefinition,
+  EnumDefinition,
 } from "../typeInfo";
 
 export const addFirstLast: TypeInfoTransforms = {
   enter: {
     TypeInfo: (typeInfo: TypeInfo) => ({
       ...typeInfo,
+      enumTypes: setFirstLast(typeInfo.enumTypes),
       objectTypes: setFirstLast(typeInfo.objectTypes),
       queryTypes: setFirstLast(typeInfo.queryTypes),
       importedObjectTypes: setFirstLast(typeInfo.importedObjectTypes),
@@ -19,6 +21,10 @@ export const addFirstLast: TypeInfoTransforms = {
     ObjectDefinition: (def: ObjectDefinition) => ({
       ...def,
       properties: setFirstLast(def.properties),
+    }),
+    EnumDefinition: (def: EnumDefinition) => ({
+      ...def,
+      properties: setFirstLast(def.values),
     }),
     MethodDefinition: (def: MethodDefinition) => ({
       ...def,
