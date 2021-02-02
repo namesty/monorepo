@@ -1,4 +1,5 @@
 import { TypeInfo } from "../typeInfo";
+import { extractEnumTypes } from "./enum-types";
 import { extractObjectTypes } from "./object-types";
 import { extractQueryTypes } from "./query-types";
 import { extractImportedObjectTypes } from "./imported-object-types";
@@ -12,6 +13,7 @@ export type SchemaExtractor = (
 ) => void;
 
 export const extractors: SchemaExtractor[] = [
+  extractEnumTypes,
   extractObjectTypes,
   extractImportedObjectTypes,
   extractQueryTypes,
