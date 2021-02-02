@@ -59,6 +59,7 @@ export interface AnyDefinition extends GenericDefinition {
   array: ArrayDefinition | null;
   scalar: ScalarDefinition | null;
   object: ObjectDefinition | null;
+  enum: EnumDefinition | null;
 }
 export function createAnyDefinition(args: {
   type: string;
@@ -67,12 +68,14 @@ export function createAnyDefinition(args: {
   array?: ArrayDefinition;
   scalar?: ScalarDefinition;
   object?: ObjectDefinition;
+  enum?: EnumDefinition;
 }): AnyDefinition {
   return {
     ...createGenericDefinition(args),
     array: args.array ? args.array : null,
     scalar: args.scalar ? args.scalar : null,
     object: args.object ? args.object : null,
+    enum: args.enum ? args.enum : null,
     kind: DefinitionKind.Any,
   };
 }
