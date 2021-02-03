@@ -5,6 +5,7 @@ import {
   ImportedObjectDefinition,
   GenericDefinition,
   EnumDefinition,
+  ImportedEnumDefinition,
 } from "./definitions";
 
 export * from "./definitions";
@@ -15,6 +16,7 @@ export interface TypeInfo {
   objectTypes: ObjectDefinition[];
   queryTypes: QueryDefinition[];
   enumTypes: EnumDefinition[];
+  importedEnumTypes: ImportedEnumDefinition[];
   importedObjectTypes: ImportedObjectDefinition[];
   importedQueryTypes: ImportedQueryDefinition[];
 }
@@ -23,6 +25,7 @@ export function createTypeInfo(): TypeInfo {
     objectTypes: [],
     enumTypes: [],
     queryTypes: [],
+    importedEnumTypes: [],
     importedObjectTypes: [],
     importedQueryTypes: [],
   };
@@ -35,6 +38,7 @@ export function combineTypeInfo(typeInfos: TypeInfo[]): TypeInfo {
     objectTypes: [],
     queryTypes: [],
     enumTypes: [],
+    importedEnumTypes: [],
     importedObjectTypes: [],
     importedQueryTypes: [],
   };
@@ -47,12 +51,16 @@ export function combineTypeInfo(typeInfos: TypeInfo[]): TypeInfo {
   };
 
   for (const typeInfo of typeInfos) {
-    for (const objectType of typeInfo.objectTypes) {
-      tryInsert(combined.objectTypes, objectType);
-    }
-
     for (const enumType of typeInfo.enumTypes) {
       tryInsert(combined.enumTypes, enumType);
+    }
+
+    for (const importedEnumType of typeInfo.importedEnumTypes) {
+      tryInsert(combined.importedEnumTypes, importedEnumType);
+    }
+
+    for (const objectType of typeInfo.objectTypes) {
+      tryInsert(combined.objectTypes, objectType);
     }
 
     for (const queryType of typeInfo.queryTypes) {

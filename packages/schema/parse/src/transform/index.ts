@@ -15,6 +15,7 @@ import {
   DefinitionKind,
   isKind,
   EnumDefinition,
+  ImportedEnumDefinition,
 } from "../typeInfo";
 
 export * from "./finalizePropertyDef";
@@ -38,6 +39,9 @@ export interface TypeInfoTransformer {
   ArrayDefinition?: (def: ArrayDefinition) => ArrayDefinition;
   MethodDefinition?: (def: MethodDefinition) => MethodDefinition;
   QueryDefinition?: (def: QueryDefinition) => QueryDefinition;
+  ImportedEnumDefinition?: (
+    def: ImportedEnumDefinition
+  ) => ImportedEnumDefinition;
   ImportedQueryDefinition?: (
     def: ImportedQueryDefinition
   ) => ImportedQueryDefinition;
@@ -58,6 +62,13 @@ export function performTransforms(
 
   for (let i = 0; i < result.enumTypes.length; ++i) {
     result.enumTypes[i] = visitEnumDefinition(result.enumTypes[i], transforms);
+  }
+
+  for (let i = 0; i < result.importedEnumTypes.length; ++i) {
+    result.enumTypes[i] = visitImportedEnumDefinition(
+      result.importedEnumTypes[i],
+      transforms
+    );
   }
 
   for (let i = 0; i < result.objectTypes.length; ++i) {
@@ -213,6 +224,15 @@ export function visitQueryDefinition(
     result.methods[i] = visitMethodDefinition(result.methods[i], transforms);
   }
 
+  return transformType(result, transforms.leave);
+}
+
+export function visitImportedEnumDefinition(
+  def: ImportedEnumDefinition,
+  transforms: TypeInfoTransforms
+): ImportedEnumDefinition {
+  let result = Object.assign({}, def);
+  result = transformType(result, transforms.enter);
   return transformType(result, transforms.leave);
 }
 

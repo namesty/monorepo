@@ -13,7 +13,8 @@ export enum DefinitionKind {
   Method = 1 << 6,
   Query = 1 << 7,
   ImportedQuery = 1 << 8,
-  ImportedObject = (1 << 9) | DefinitionKind.Object,
+  ImportedEnum = 1 << 9,
+  ImportedObject = (1 << 10) | DefinitionKind.Object,
 }
 
 export function isKind(type: GenericDefinition, kind: DefinitionKind): boolean {
@@ -267,6 +268,26 @@ interface ImportedDefinition {
   uri: string;
   namespace: string;
   nativeType: string;
+}
+
+export interface ImportedEnumDefinition
+  extends EnumDefinition,
+    ImportedDefinition {}
+export function createImportedEnumDefinition(args: {
+  type: string;
+  name?: string;
+  required?: boolean;
+  uri: string;
+  namespace: string;
+  nativeType: string;
+}): ImportedEnumDefinition {
+  return {
+    ...createEnumDefinition(args),
+    uri: args.uri,
+    namespace: args.namespace,
+    nativeType: args.nativeType,
+    kind: DefinitionKind.Enum,
+  };
 }
 
 export interface ImportedQueryDefinition
