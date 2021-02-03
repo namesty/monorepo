@@ -1,15 +1,11 @@
 import {
   createArrayDefinition,
-  createEnumDefinition,
-  createObjectDefinition,
   createPropertyDefinition,
-  createScalarDefinition,
-  isScalarType,
   ObjectDefinition,
   PropertyDefinition,
 } from "../typeInfo";
-import { isEnumType } from "../typeInfo/enum";
 import { TypeDefinitions } from "./type-definitions";
+import { setPropertyType } from "./utils";
 
 import { FieldDefinitionNode, NamedTypeNode } from "graphql";
 
@@ -59,25 +55,15 @@ export function extractNamedType(
     return;
   }
 
-  if (isScalarType(node.name.value)) {
-    property.scalar = createScalarDefinition({
-      name: property.name,
+  setPropertyType(
+    property,
+    property.name as string,
+    {
       type: node.name.value,
       required: state.nonNullType,
-    });
-  } else if (isEnumType(node.name.value, typeDefinitions.enumTypes)) {
-    property.enum = createEnumDefinition({
-      name: property.name,
-      type: node.name.value,
-      required: state.nonNullType,
-    });
-  } else {
-    property.object = createObjectDefinition({
-      name: property.name,
-      type: node.name.value,
-      required: state.nonNullType,
-    });
-  }
+    },
+    typeDefinitions
+  );
 
   state.nonNullType = false;
 }
