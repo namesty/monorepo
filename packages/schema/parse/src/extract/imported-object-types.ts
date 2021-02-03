@@ -23,7 +23,6 @@ import {
   DirectiveNode,
 } from "graphql";
 
-
 const visitorEnter = (
   importedObjectTypes: ImportedObjectDefinition[],
   typeDefinitions: TypeDefinitions,
