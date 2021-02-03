@@ -275,6 +275,7 @@ export interface ImportedEnumDefinition
     ImportedDefinition {}
 export function createImportedEnumDefinition(args: {
   type: string;
+  values: string[];
   name?: string;
   required?: boolean;
   uri: string;

@@ -10,6 +10,7 @@ import {
   State,
 } from "./object-types-utils";
 import { TypeDefinitions } from "./type-definitions";
+import { extractImportDirectiveArguments } from "./utils";
 
 import {
   DocumentNode,
@@ -20,8 +21,8 @@ import {
   FieldDefinitionNode,
   visit,
   DirectiveNode,
-  ValueNode,
 } from "graphql";
+
 
 const visitorEnter = (
   importedObjectTypes: ImportedObjectDefinition[],
@@ -54,47 +55,14 @@ const visitorEnter = (
       return;
     }
 
-    const importedDir = node.directives[importedIndex];
-
-    if (!importedDir.arguments || importedDir.arguments.length !== 3) {
-      // TODO: Implement better error handling
-      // https://github.com/Web3-API/prototype/issues/15
-      throw Error("Error: imported directive missing arguments");
-    }
-
-    let namespace: string | undefined;
-    let uri: string | undefined;
-    let nativeType: string | undefined;
-
-    const extractString = (value: ValueNode, name: string) => {
-      if (value.kind === "StringValue") {
-        return value.value;
-      } else {
-        throw Error(`Error: argument '${name}' must be a string`);
-      }
-    };
-
-    for (const importArg of importedDir.arguments) {
-      if (importArg.name.value === "namespace") {
-        namespace = extractString(importArg.value, "namespace");
-      } else if (importArg.name.value === "uri") {
-        uri = extractString(importArg.value, "uri");
-      } else if (importArg.name.value === "type") {
-        nativeType = extractString(importArg.value, "type");
-      }
-    }
-
-    if (!nativeType || !namespace || !uri) {
-      throw Error(
-        "Error: import directive missing one of its required arguments (namespace, uri, type)"
-      );
-    }
-
+    const directiveArgs = extractImportDirectiveArguments(
+      node.directives[importedIndex]
+    );
     const importedType = createImportedObjectDefinition({
       type: typeName,
-      uri,
-      namespace,
-      nativeType,
+      uri: directiveArgs.uri,
+      namespace: directiveArgs.namespace,
+      nativeType: directiveArgs.nativeType,
     });
 
     importedObjectTypes.push(importedType);

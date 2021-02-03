@@ -1,9 +1,32 @@
-import { TypeInfo, EnumDefinition, createEnumDefinition } from "../typeInfo";
+import {
+  TypeInfo,
+  EnumDefinition,
+  createImportedEnumDefinition,
+} from "../typeInfo";
+import { extractImportDirectiveArguments } from "./utils";
 
-import { DocumentNode, EnumTypeDefinitionNode, visit } from "graphql";
+import {
+  DirectiveNode,
+  DocumentNode,
+  EnumTypeDefinitionNode,
+  visit,
+} from "graphql";
 
 const visitorEnter = (enumTypes: EnumDefinition[]) => ({
   EnumTypeDefinition: (node: EnumTypeDefinitionNode) => {
+    if (!node.directives) {
+      return;
+    }
+
+    // Look for imported
+    const importedIndex = node.directives.findIndex(
+      (dir: DirectiveNode) => dir.name.value === "imported"
+    );
+
+    if (importedIndex === -1) {
+      return;
+    }
+
     const values: string[] = [];
     if (node.values) {
       for (const value of node.values) {
@@ -11,9 +34,15 @@ const visitorEnter = (enumTypes: EnumDefinition[]) => ({
       }
     }
 
-    const enumType = createEnumDefinition({
+    const directiveArgs = extractImportDirectiveArguments(
+      node.directives[importedIndex]
+    );
+    const enumType = createImportedEnumDefinition({
       type: node.name.value,
       values: values,
+      uri: directiveArgs.uri,
+      namespace: directiveArgs.namespace,
+      nativeType: directiveArgs.nativeType,
     });
     enumTypes.push(enumType);
   },

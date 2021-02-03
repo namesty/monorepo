@@ -1,9 +1,24 @@
 import { TypeInfo, EnumDefinition, createEnumDefinition } from "../typeInfo";
 
-import { DocumentNode, EnumTypeDefinitionNode, visit } from "graphql";
+import {
+  DirectiveNode,
+  DocumentNode,
+  EnumTypeDefinitionNode,
+  visit,
+} from "graphql";
 
 const visitorEnter = (enumTypes: EnumDefinition[]) => ({
   EnumTypeDefinition: (node: EnumTypeDefinitionNode) => {
+    // Skip imported types
+    if (
+      node.directives &&
+      node.directives.findIndex(
+        (dir: DirectiveNode) => dir.name.value === "imported"
+      ) > -1
+    ) {
+      return;
+    }
+
     const values: string[] = [];
     if (node.values) {
       for (const value of node.values) {
