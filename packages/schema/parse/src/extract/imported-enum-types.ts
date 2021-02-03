@@ -1,7 +1,7 @@
 import {
   TypeInfo,
-  EnumDefinition,
   createImportedEnumDefinition,
+  ImportedEnumDefinition,
 } from "../typeInfo";
 import { extractImportDirectiveArguments } from "./utils";
 
@@ -12,7 +12,7 @@ import {
   visit,
 } from "graphql";
 
-const visitorEnter = (enumTypes: EnumDefinition[]) => ({
+const visitorEnter = (importedEnumTypes: ImportedEnumDefinition[]) => ({
   EnumTypeDefinition: (node: EnumTypeDefinitionNode) => {
     if (!node.directives) {
       return;
@@ -44,7 +44,7 @@ const visitorEnter = (enumTypes: EnumDefinition[]) => ({
       namespace: directiveArgs.namespace,
       nativeType: directiveArgs.nativeType,
     });
-    enumTypes.push(enumType);
+    importedEnumTypes.push(enumType);
   },
 });
 
@@ -53,6 +53,6 @@ export function extractImportedEnumTypes(
   typeInfo: TypeInfo
 ): void {
   visit(astNode, {
-    enter: visitorEnter(typeInfo.enumTypes),
+    enter: visitorEnter(typeInfo.importedEnumTypes),
   });
 }
