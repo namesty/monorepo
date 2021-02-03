@@ -9,6 +9,7 @@ import {
   PropertyDefinition,
 } from "../typeInfo";
 import { isEnumType } from "../typeInfo/enum";
+import { TypeDefinitions } from "./type-definitions";
 
 import { FieldDefinitionNode, NamedTypeNode } from "graphql";
 
@@ -43,7 +44,11 @@ export function extractFieldDefinition(
   importDef.properties.push(property);
 }
 
-export function extractNamedType(node: NamedTypeNode, state: State): void {
+export function extractNamedType(
+  node: NamedTypeNode,
+  state: State,
+  typeDefinitions: TypeDefinitions
+): void {
   const property = state.currentProperty;
 
   if (!property) {
@@ -60,7 +65,7 @@ export function extractNamedType(node: NamedTypeNode, state: State): void {
       type: node.name.value,
       required: state.nonNullType,
     });
-  } else if (isEnumType(node.name.value, this.typeInfo.enumTypes)) {
+  } else if (isEnumType(node.name.value, typeDefinitions.enumTypes)) {
     property.enum = createEnumDefinition({
       name: property.name,
       type: node.name.value,

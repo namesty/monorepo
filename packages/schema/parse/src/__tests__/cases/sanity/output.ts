@@ -10,6 +10,8 @@ import {
   createObjectPropertyDefinition,
   createImportedObjectDefinition,
   createImportedQueryDefinition,
+  createEnumDefinition,
+  createEnumPropertyDefinition,
 } from "../../../typeInfo";
 
 export const output: TypeInfo = {
@@ -138,6 +140,15 @@ export const output: TypeInfo = {
         createObjectPropertyDefinition({
           name: "optNestedObject",
           type: "UserObject",
+        }),
+        createEnumPropertyDefinition({
+          name: "optEnum",
+          type: "CustomEnum",
+        }),
+        createEnumPropertyDefinition({
+          name: "enum",
+          type: "CustomEnum",
+          required: true
         })
       ],
     },
@@ -152,6 +163,12 @@ export const output: TypeInfo = {
         createScalarPropertyDefinition({ name: "fieldB", type: "Int", required: true }),
       ],
     },
+  ],
+  enumTypes: [
+    createEnumDefinition({
+      type: "CustomEnum",
+      values: ["TEXT", "BINARY"]
+    })
   ],
   queryTypes: [
     {

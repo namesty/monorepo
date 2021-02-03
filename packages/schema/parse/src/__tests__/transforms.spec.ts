@@ -125,6 +125,7 @@ describe("Web3API Schema TypeInfo Transformations", () => {
           last: true,
         } as ObjectDefinition,
       ],
+      enumTypes : [],
       queryTypes: [
         {
           ...createQueryDefinition({ type: "Query" }),

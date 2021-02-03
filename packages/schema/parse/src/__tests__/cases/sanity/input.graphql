@@ -13,11 +13,16 @@ directive @imported(
   namespace: String!
   uri: String!
   type: String!
-) on OBJECT
+) on OBJECT | ENUM
 
 directive @imports(
   types: [String!]!
 ) on OBJECT
+
+enum CustomEnum {
+  TEXT
+  BINARY
+}
 
 type CustomType {
   str: String!
@@ -45,6 +50,8 @@ type CustomType {
   objectArrayArray: [[UserObject!]!]!
   nestedObject: UserObject!
   optNestedObject: UserObject
+  optEnum: CustomEnum
+  enum: CustomEnum!
 }
 
 type AnotherType {

@@ -24,6 +24,7 @@ import {
 
 const visitorEnter = (
   importedObjectTypes: ImportedObjectDefinition[],
+  typeInfo: TypeInfo,
   state: State
 ) => ({
   ObjectTypeDefinition: (node: ObjectTypeDefinitionNode) => {
@@ -102,7 +103,7 @@ const visitorEnter = (
     state.nonNullType = true;
   },
   NamedType: (node: NamedTypeNode) => {
-    extractNamedType(node, state);
+    extractNamedType(node, state, typeInfo);
   },
   ListType: (_node: ListTypeNode) => {
     extractListType(state);
@@ -131,7 +132,7 @@ export function extractImportedObjectTypes(
   const state: State = {};
 
   visit(astNode, {
-    enter: visitorEnter(typeInfo.importedObjectTypes, state),
+    enter: visitorEnter(typeInfo.importedObjectTypes, typeInfo, state),
     leave: visitorLeave(state),
   });
 }
