@@ -65,7 +65,7 @@ export function performTransforms(
   }
 
   for (let i = 0; i < result.importedEnumTypes.length; ++i) {
-    result.enumTypes[i] = visitImportedEnumDefinition(
+    result.importedEnumTypes[i] = visitImportedEnumDefinition(
       result.importedEnumTypes[i],
       transforms
     );
@@ -276,6 +276,7 @@ export function transformType<TDefinition extends GenericDefinition>(
     PropertyDefinition,
     MethodDefinition,
     QueryDefinition,
+    ImportedEnumDefinition,
     ImportedQueryDefinition,
     ImportedObjectDefinition,
   } = transform;
@@ -309,6 +310,9 @@ export function transformType<TDefinition extends GenericDefinition>(
   }
   if (ImportedQueryDefinition && isKind(result, DefinitionKind.ImportedQuery)) {
     result = Object.assign(result, ImportedQueryDefinition(result as any));
+  }
+  if (ImportedEnumDefinition && isKind(result, DefinitionKind.ImportedEnum)) {
+    result = Object.assign(result, ImportedEnumDefinition(result as any));
   }
   if (
     ImportedObjectDefinition &&
