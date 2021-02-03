@@ -149,6 +149,26 @@ export const output: TypeInfo = {
           name: "enum",
           type: "CustomEnum",
           required: true
+        }),
+        createArrayPropertyDefinition({
+          name: "enumArray",
+          type: "[CustomEnum]",
+          required: true,
+          item: createEnumDefinition({
+            name: "enumArray",
+            type: "CustomEnum",
+            required: true,
+          })
+        }),
+        createArrayPropertyDefinition({
+          name: "optEnumArray",
+          type: "[CustomEnum]",
+          required: false,
+          item: createEnumDefinition({
+            name: "optEnumArray",
+            type: "CustomEnum",
+            required: false
+          })
         })
       ],
     },
@@ -192,6 +212,22 @@ export const output: TypeInfo = {
           return: createObjectPropertyDefinition({
             name: "userObjectMethod",
             type: "UserObject",
+            required: true
+          }),
+        },
+        {
+          ...createMethodDefinition({ type: "query", name: "enumMethod" }),
+          arguments: [
+            createEnumPropertyDefinition({ name: "enum", type: "CustomEnum" }),
+            createArrayPropertyDefinition({ name: "arrayEnum", type: "[CustomEnum]", required: true, item: createEnumDefinition({
+              type: "CustomEnum",
+              name: "arrayEnum",
+              required: true
+            })}),
+          ],
+          return: createEnumPropertyDefinition({
+            name: "enumMethod",
+            type: "CustomEnum",
             required: true
           }),
         },

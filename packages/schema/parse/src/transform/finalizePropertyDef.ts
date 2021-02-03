@@ -42,7 +42,11 @@ function populateArrayType(array: ArrayDefinition) {
     if (currentArray.array) {
       currentArray = currentArray.array;
       populateArrayType(currentArray);
-    } else if (currentArray.scalar || currentArray.object) {
+    } else if (
+      currentArray.scalar ||
+      currentArray.object ||
+      currentArray.enum
+    ) {
       baseTypeFound = true;
     } else {
       throw Error(

@@ -141,6 +141,10 @@ export function createArrayDefinition(args: {
         args.item && isKind(args.item, DefinitionKind.Object)
           ? (args.item as ObjectDefinition)
           : undefined,
+      enum:
+        args.item && isKind(args.item, DefinitionKind.Enum)
+          ? (args.item as EnumDefinition)
+          : undefined,
     }),
     item: args.item ? args.item : null,
     kind: DefinitionKind.Array,

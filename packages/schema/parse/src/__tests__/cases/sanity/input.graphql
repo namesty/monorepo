@@ -52,6 +52,8 @@ type CustomType {
   optNestedObject: UserObject
   optEnum: CustomEnum
   enum: CustomEnum!
+  enumArray: [CustomEnum!]!,
+  optEnumArray: [CustomEnum]
 }
 
 type AnotherType {
@@ -74,6 +76,11 @@ type Query @imports(
     userObject: UserObject
     arrayObject: [UserObject!]!
   ): UserObject!
+
+  enumMethod(
+    enum: CustomEnum,
+    arrayEnum: [CustomEnum!]!
+  ): CustomEnum!
 }
 
 type TestImport_Query @imported(
