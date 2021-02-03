@@ -103,6 +103,11 @@ type TestImport_Query @imported(
   importedObjectMethod(
     importedObject: TestImport_Object!
   ): TestImport_Object!
+
+  importedEnumMethod(
+    enum: TestImport_Enum!
+    optEnum: TestImport_Enum
+  ): TestImport_Enum!
 }
 
 type TestImport_Mutation @imported(
@@ -131,4 +136,13 @@ type TestImport_NestedObject @imported(
 ) {
   foo: [String!]!
   circular: TestImport_Object!
+}
+
+enum TestImport_Enum @imported(
+  namespace: "TestImport",
+  uri: "testimport.uri.eth",
+  type: "Enum"
+) {
+  TEXT
+  BYTES
 }

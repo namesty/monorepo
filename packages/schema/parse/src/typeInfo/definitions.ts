@@ -287,7 +287,7 @@ export function createImportedEnumDefinition(args: {
     uri: args.uri,
     namespace: args.namespace,
     nativeType: args.nativeType,
-    kind: DefinitionKind.Enum,
+    kind: DefinitionKind.ImportedEnum,
   };
 }
 

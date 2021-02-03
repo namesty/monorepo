@@ -12,6 +12,7 @@ import {
   createImportedQueryDefinition,
   createEnumDefinition,
   createEnumPropertyDefinition,
+  createImportedEnumDefinition,
 } from "../../../typeInfo";
 
 export const output: TypeInfo = {
@@ -190,6 +191,15 @@ export const output: TypeInfo = {
       values: ["TEXT", "BINARY"]
     })
   ],
+  importedEnumTypes: [
+    createImportedEnumDefinition({
+      type: "TestImport_Enum",
+      uri: "testimport.uri.eth",
+      namespace: "TestImport",
+      nativeType: "Enum",
+      values: ["TEXT", "BYTES"]
+    })
+  ],
   queryTypes: [
     {
       ...createQueryDefinition({ type: "Query" }),
@@ -354,6 +364,32 @@ export const output: TypeInfo = {
                 required: true
               }),
             }
+          }
+        },
+        {
+          ...createMethodDefinition({ type: "query", name: "importedEnumMethod" }),
+          arguments: [
+            {
+              ...createEnumPropertyDefinition({
+                name: "enum",
+                type: "TestImport_Enum",
+                required: true
+              }),
+            },
+            {
+              ...createEnumPropertyDefinition({
+                name: "optEnum",
+                type: "TestImport_Enum",
+                required: false
+              }),
+            }
+          ],
+          return: {
+            ...createEnumPropertyDefinition({
+              name: "importedEnumMethod",
+              type: "TestImport_Enum",
+              required: true
+            }),
           }
         },
       ],
