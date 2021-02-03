@@ -11,9 +11,8 @@ import {
   QueryDefinition,
   createMethodDefinition,
   MethodDefinition,
-  createScalarDefinition,
   createImportedQueryDefinition,
-  ImportedQueryDefinition
+  ImportedQueryDefinition,
 } from "../typeInfo";
 
 const schema1 = `
@@ -126,6 +125,7 @@ describe("Web3API Schema TypeInfo Transformations", () => {
         } as ObjectDefinition,
       ],
       enumTypes : [],
+      importedEnumTypes: [],
       queryTypes: [
         {
           ...createQueryDefinition({ type: "Query" }),
@@ -377,6 +377,8 @@ describe("Web3API Schema TypeInfo Transformations", () => {
         } as ObjectDefinition,
       ],
       queryTypes: [],
+      importedEnumTypes: [],
+      enumTypes: [],
       importedObjectTypes: [],
       importedQueryTypes: [],
     };
