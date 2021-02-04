@@ -142,6 +142,10 @@ export function visitAnyDefinition(
     result.object = visitObjectDefinition(result.object, transforms);
   }
 
+  if (result.enum) {
+    result.enum = visitEnumDefinition(result.enum, transforms);
+  }
+
   return result;
 }
 
