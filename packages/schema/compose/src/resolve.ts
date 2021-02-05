@@ -210,14 +210,33 @@ const extractObjectImportDependencies = (
 
       const namespaceType = appendNamespace(namespace, def.type);
       if (!importsFound[namespaceType]) {
-        const obj = rootTypeInfo.enumTypes.find((obj) => obj.type === def.type);
-        if (!obj) {
-          throw new Error("");
+        let idx = rootTypeInfo.enumTypes.findIndex(
+          (en) => en.type === def.type
+        );
+        let en = undefined;
+
+        if (idx === -1) {
+          idx = rootTypeInfo.importedEnumTypes.findIndex(
+            (en) => en.type === def.type
+          );
+        } else {
+          en = rootTypeInfo.enumTypes[idx];
+        }
+
+        if (idx === -1) {
+          throw Error(
+            `extractObjectImportDependencies: Cannot find the dependent type within the root type info.\n` +
+              `Type: ${def.type}\nTypeInfo: ${JSON.stringify(
+                rootTypeInfo
+              )}\n${namespace}\n${JSON.stringify(Object.keys(importsFound))}`
+          );
+        } else if (en === undefined) {
+          en = rootTypeInfo.importedEnumTypes[idx];
         }
 
         // Create the new ImportedEnumDefinition
         const importedEnum: ImportedEnumDefinition & Namespaced = {
-          ...obj,
+          ...en,
           name: null,
           required: null,
           type: namespaceType,
@@ -226,7 +245,7 @@ const extractObjectImportDependencies = (
           uri,
           namespace,
           nativeType: def.type,
-          values: obj.values,
+          values: en.values,
         };
 
         // Keep track of it

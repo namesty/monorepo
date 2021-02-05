@@ -101,6 +101,8 @@ type CustomType {
   optImportedNestedObjectArray: [Imported_NestedObjectType]!
   enum: CustomEnum!
   optEnum: CustomEnum
+  importedEnum: Imported_Enum!
+  optImportedEnum: Imported_Enum
 }
 
 type NestedObjectType {
@@ -125,4 +127,13 @@ type Imported_ObjectType @imported(
   type: "ObjectType"
 ) {
   prop: String!
+}
+
+enum Imported_Enum @imported(
+  namespace: "Imported",
+  uri: "imported.eth",
+  type: "ImportedEnum"
+) {
+  STRING
+  BYTES
 }
