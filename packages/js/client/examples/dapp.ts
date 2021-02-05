@@ -1,4 +1,4 @@
-import { Web3APIClient } from "@web3api/client-js";
+import { Web3APIClient } from "@namestyorg/client-js";
 
 async function main() {
   const client = new Web3APIClient();

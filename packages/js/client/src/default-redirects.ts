@@ -1,7 +1,7 @@
-import { UriRedirect, Uri } from "@web3api/core-js";
-import { IpfsPlugin } from "@web3api/ipfs-plugin-js";
-import { EthereumPlugin } from "@web3api/ethereum-plugin-js";
-import { EnsPlugin } from "@web3api/ens-plugin-js";
+import { UriRedirect, Uri } from "@namestyorg/core-js";
+import { IpfsPlugin } from "@namestyorg/ipfs-plugin-js";
+import { EthereumPlugin } from "@namestyorg/ethereum-plugin-js";
+import { EnsPlugin } from "@namestyorg/ens-plugin-js";
 
 export function getDefaultRedirects(): UriRedirect[] {
   // NOTE: These are high-level primitives for core plugins,

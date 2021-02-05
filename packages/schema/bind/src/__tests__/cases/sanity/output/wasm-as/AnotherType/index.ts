@@ -1,4 +1,4 @@
-import { Nullable } from "@web3api/wasm-as";
+import { Nullable } from "@namestyorg/wasm-as";
 import {
   serializeAnotherType,
   deserializeAnotherType

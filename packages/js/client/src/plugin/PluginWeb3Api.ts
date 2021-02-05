@@ -8,7 +8,7 @@ import {
   Plugin,
   PluginPackage,
   Uri,
-} from "@web3api/core-js";
+} from "@namestyorg/core-js";
 import { decode } from "@msgpack/msgpack";
 
 export class PluginWeb3Api extends Api {

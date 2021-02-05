@@ -4,7 +4,7 @@ import {
   WriteSizer,
   WriteEncoder,
   Write
-} from "@web3api/wasm-as";
+} from "@namestyorg/wasm-as";
 
 export class Input_queryMethod {
   arg: string;

@@ -1,4 +1,4 @@
-import { PluginManifest, Uri } from "@web3api/core-js";
+import { PluginManifest, Uri } from "@namestyorg/core-js";
 
 export const manifest: PluginManifest = {
   // TODO: use the schema.graphql

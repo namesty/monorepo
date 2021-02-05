@@ -9,12 +9,12 @@ import { step, withSpinner } from "./helpers/spinner";
 import fs, { readFileSync } from "fs";
 import path from "path";
 import * as asc from "assemblyscript/cli/asc";
-import { Manifest, Uri, Web3ApiClient, UriRedirect } from "@web3api/client-js";
-import { bindSchema, writeDirectory } from "@web3api/schema-bind";
-import { composeSchema, ComposerOutput } from "@web3api/schema-compose";
-import { EnsPlugin } from "@web3api/ens-plugin-js";
-import { EthereumPlugin } from "@web3api/ethereum-plugin-js";
-import { IpfsPlugin } from "@web3api/ipfs-plugin-js";
+import { Manifest, Uri, Web3ApiClient, UriRedirect } from "@namestyorg/client-js";
+import { bindSchema, writeDirectory } from "@namestyorg/schema-bind";
+import { composeSchema, ComposerOutput } from "@namestyorg/schema-compose";
+import { EnsPlugin } from "@namestyorg/ens-plugin-js";
+import { EthereumPlugin } from "@namestyorg/ethereum-plugin-js";
+import { IpfsPlugin } from "@namestyorg/ipfs-plugin-js";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
 const fsExtra = require("fs-extra");

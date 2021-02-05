@@ -5,7 +5,7 @@ import {
   WriteSizer,
   WriteEncoder,
   Nullable
-} from "@web3api/wasm-as";
+} from "@namestyorg/wasm-as";
 import { TestImport_Object } from "./";
 
 export function serializeTestImport_Object(type: TestImport_Object): ArrayBuffer {
