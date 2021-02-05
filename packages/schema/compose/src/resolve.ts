@@ -31,6 +31,8 @@ import {
   EnumDefinition,
   visitEnumDefinition,
   visitImportedEnumDefinition,
+  GenericDefinition,
+  isKind,
 } from "@web3api/schema-parse";
 import Mustache from "mustache";
 
@@ -489,7 +491,7 @@ async function resolveLocalImports(
   typeInfo: TypeInfo
 ): Promise<void> {
   for (const importToResolve of importsToResolve) {
-    const { objectTypes, path } = importToResolve;
+    const { importedTypes, path } = importToResolve;
 
     // Resolve the schema
     let schema = await resolveSchema(path);
@@ -506,22 +508,37 @@ async function resolveLocalImports(
     // Parse the schema into TypeInfo
     const localTypeInfo = parseSchema(schema);
 
-    // Keep track of all imported object type names
-    const typesToImport: Record<string, ObjectDefinition> = {};
+    // Keep track of all imported type names
+    const typesToImport: Record<string, GenericDefinition> = {};
 
-    for (const objectType of objectTypes) {
-      if (objectType === "Query" || objectType === "Mutation") {
+    for (const importedType of importedTypes) {
+      if (importedType === "Query" || importedType === "Mutation") {
         throw Error(
           `Importing query types from local schemas is prohibited. Tried to import from ${path}.`
         );
       } else {
-        const type = localTypeInfo.objectTypes.find(
-          (type) => type.type === objectType
-        );
+        let type: GenericDefinition | undefined;
+        let visitorFunc: Function;
+
+        if (
+          localTypeInfo.objectTypes.findIndex(
+            (type) => type.type === importedType
+          ) > -1
+        ) {
+          visitorFunc = visitObjectDefinition;
+          type = localTypeInfo.objectTypes.find(
+            (type) => type.type === importedType
+          );
+        } else {
+          visitorFunc = visitEnumDefinition;
+          type = localTypeInfo.enumTypes.find(
+            (type) => type.type === importedType
+          );
+        }
 
         if (!type) {
           throw Error(
-            `Cannot find type "${objectType}" in the schema at ${path}.\nFound: [ ${localTypeInfo.objectTypes.map(
+            `Cannot find type "${importedType}" in the schema at ${path}.\nFound: [ ${localTypeInfo.objectTypes.map(
               (type) => type.type + " "
             )}]`
           );
@@ -529,7 +546,7 @@ async function resolveLocalImports(
 
         typesToImport[type.type] = type;
 
-        visitObjectDefinition(type, {
+        visitorFunc(type, {
           enter: {
             ObjectDefinition: (def: ObjectDefinition) => {
               // Skip objects that we've already processed
@@ -558,6 +575,32 @@ async function resolveLocalImports(
               };
               return def;
             },
+            EnumDefinition: (def: EnumDefinition) => {
+              if (typesToImport[def.type]) {
+                return def;
+              }
+
+              // Find the EnumDefinition
+              const idx = localTypeInfo.enumTypes.findIndex(
+                (obj) => obj.type === def.type
+              );
+
+              if (idx === -1) {
+                throw Error(
+                  `resolveLocalImports: Cannot find the EnumDefinition within the TypeInfo.\n` +
+                    `Type: ${def.type}\nTypeInfo: ${JSON.stringify(
+                      localTypeInfo
+                    )}`
+                );
+              }
+
+              typesToImport[def.type] = {
+                ...localTypeInfo.enumTypes[idx],
+                name: null,
+                required: null,
+              };
+              return def;
+            },
           },
         });
       }
@@ -565,10 +608,21 @@ async function resolveLocalImports(
 
     // Add all imported types into the aggregate TypeInfo
     for (const importType of Object.keys(typesToImport)) {
-      if (
-        typeInfo.objectTypes.findIndex((def) => def.type === importType) === -1
-      ) {
-        typeInfo.objectTypes.push(typesToImport[importType]);
+      if (isKind(typesToImport[importType], DefinitionKind.Object)) {
+        if (
+          typeInfo.objectTypes.findIndex((def) => def.type === importType) ===
+          -1
+        ) {
+          typeInfo.objectTypes.push(
+            typesToImport[importType] as ObjectDefinition
+          );
+        }
+      } else {
+        if (
+          typeInfo.enumTypes.findIndex((def) => def.type === importType) === -1
+        ) {
+          typeInfo.enumTypes.push(typesToImport[importType] as EnumDefinition);
+        }
       }
     }
   }

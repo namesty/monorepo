@@ -116,7 +116,7 @@ export function parseLocalImports(
     }
 
     localImports.push({
-      objectTypes: importTypes,
+      importedTypes: importTypes,
       path,
     });
   }
@@ -133,7 +133,7 @@ export function parseLocalImports(
 
   const importTypeDuplicates = (imports: LocalImport[]) => {
     const importTypes: string[] = [];
-    imports.forEach((i) => importTypes.push(...i.objectTypes));
+    imports.forEach((i) => importTypes.push(...i.importedTypes));
     const counts = importTypeCount(importTypes);
     return Object.keys(counts).filter((a) => counts[a] > 1);
   };

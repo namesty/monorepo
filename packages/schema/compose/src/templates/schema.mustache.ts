@@ -8,6 +8,14 @@ type {{type}} {
 }
 
 {{/objectTypes}}
+{{#enumTypes}}
+enum {{type}} {
+  {{#values}}
+  {{ . }}
+  {{/values}}
+}
+
+{{/enumTypes}}
 ### Imported Queries START ###
 
 {{#importedQueryTypes}}
