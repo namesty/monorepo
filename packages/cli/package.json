@@ -1,6 +1,6 @@
 {
   "name": "@namestyorg/cli",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.1-alpha.0",
   "license": "MIT",
   "bin": {
     "w3": "bin/w3"
@@ -10,8 +10,8 @@
     "lint": "eslint --color --ext .ts src/"
   },
   "dependencies": {
-    "@namestyorg/client-js": "^1.0.0-alpha.0",
-    "@namestyorg/client-test-env": "^1.0.0-alpha.0",
+    "@namestyorg/client-js": "^1.0.1-alpha.0",
+    "@namestyorg/client-test-env": "^1.0.1-alpha.0",
     "@namestyorg/core-js": "^1.0.0-alpha.0",
     "@namestyorg/ens-plugin-js": "^1.0.0-alpha.0",
     "@namestyorg/ethereum-plugin-js": "^1.0.0-alpha.0",

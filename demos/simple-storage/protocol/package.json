@@ -1,6 +1,6 @@
 {
   "name": "@namestyorg/examples-simple-storage",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.1-alpha.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "test:env:down": "w3 test-env down"
   },
   "devDependencies": {
-    "@namestyorg/cli": "^1.0.0-alpha.0",
+    "@namestyorg/cli": "^1.0.1-alpha.0",
     "@namestyorg/ethereum-plugin-js": "^1.0.0-alpha.0",
     "@namestyorg/wasm-as": "^1.0.0-alpha.0",
     "ethers": "5.0.8",

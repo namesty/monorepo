@@ -1,7 +1,7 @@
 {
   "name": "@namestyorg/http-plugin-js",
   "description": "HTTP plugin enabling invocating http methods through web3api",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.1-alpha.0",
   "license": "MIT",
   "main": "build/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "axios": "0.21.1"
   },
   "devDependencies": {
-    "@namestyorg/client-js": "^1.0.0-alpha.0",
+    "@namestyorg/client-js": "^1.0.1-alpha.0",
     "@types/jest": "26.0.8",
     "jest": "26.2.2",
     "nock": "13.0.7",
