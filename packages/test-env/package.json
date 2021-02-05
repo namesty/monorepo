@@ -2,7 +2,6 @@
   "name": "@namestyorg/client-test-env",
   "version": "1.0.0-alpha.0",
   "license": "MIT",
-  "private": true,
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
