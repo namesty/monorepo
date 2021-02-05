@@ -14,13 +14,18 @@ directive @imported(
   namespace: String!
   uri: String!
   type: String!
-) on OBJECT
+) on OBJECT | ENUM
 
 directive @imports(
   types: [String!]!
 ) on OBJECT
 
 ### Web3API Header END ###
+
+enum CustomEnum {
+  STRING
+  BYTES
+}
 
 type Query {
   method1(
@@ -94,6 +99,8 @@ type CustomType {
   optNestedObjectArray: [NestedObjectType]!
   importedNestedObject: Imported_NestedObjectType!
   optImportedNestedObjectArray: [Imported_NestedObjectType]!
+  enum: CustomEnum!
+  optEnum: CustomEnum
 }
 
 type NestedObjectType {

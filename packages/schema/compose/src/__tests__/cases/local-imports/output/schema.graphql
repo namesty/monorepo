@@ -14,7 +14,7 @@ directive @imported(
   namespace: String!
   uri: String!
   type: String!
-) on OBJECT
+) on OBJECT | ENUM
 
 directive @imports(
   types: [String!]!

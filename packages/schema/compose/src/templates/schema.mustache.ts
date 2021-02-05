@@ -45,6 +45,19 @@ type {{type}} @imported(
 }
 
 {{/importedObjectTypes}}
+
+{{#importedEnumTypes}}
+enum {{type}} @imported(
+  namespace: "{{namespace}}",
+  uri: "{{uri}}",
+  type: "{{nativeType}}"
+) {
+  {{#values}}
+  {{.}}
+  {{/values}}
+}
+
+{{/importedEnumTypes}}
 ### Imported Objects END ###{{/typeInfo}}`;
 
 export { template };

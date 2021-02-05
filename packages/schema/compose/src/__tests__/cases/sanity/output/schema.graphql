@@ -14,7 +14,7 @@ directive @imported(
   namespace: String!
   uri: String!
   type: String!
-) on OBJECT
+) on OBJECT | ENUM
 
 directive @imports(
   types: [String!]!
@@ -28,7 +28,8 @@ type Query @imports(
     "Namespace_ObjectType",
     "Namespace_NestedObjectType",
     "Namespace_Imported_NestedObjectType",
-    "Namespace_Imported_ObjectType"
+    "Namespace_Imported_ObjectType",
+    "Namespace_CustomEnum"
   ]
 ) {
   method1(
@@ -74,6 +75,7 @@ type Mutation @imports(
     "Namespace_Imported_NestedObjectType",
     "Namespace_Imported_ObjectType",
     "Namespace_CustomType",
+    "Namespace_CustomEnum",
     "JustMutation_Mutation"
   ]
 ) {
@@ -220,6 +222,8 @@ type Namespace_CustomType @imported(
   optNestedObjectArray: [Namespace_NestedObjectType]!
   importedNestedObject: Namespace_Imported_NestedObjectType!
   optImportedNestedObjectArray: [Namespace_Imported_NestedObjectType]!
+  enum: Namespace_CustomEnum!
+  optEnum: Namespace_CustomEnum
 }
 
 type Namespace_ObjectType @imported(
@@ -252,6 +256,15 @@ type Namespace_Imported_ObjectType @imported(
   type: "Imported_ObjectType"
 ) {
   prop: String!
+}
+
+enum Namespace_CustomEnum @imported(
+  namespace: "Namespace",
+  uri: "test.eth",
+  type: "CustomEnum"
+) {
+  STRING
+  BYTES
 }
 
 ### Imported Objects END ###
