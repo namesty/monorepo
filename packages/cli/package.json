@@ -1,6 +1,6 @@
 {
   "name": "@namestyorg/cli",
-  "version": "0.0.1-prealpha.1",
+  "version": "1.0.0-alpha.0",
   "license": "MIT",
   "bin": {
     "w3": "bin/w3"
@@ -10,14 +10,14 @@
     "lint": "eslint --color --ext .ts src/"
   },
   "dependencies": {
-    "@namestyorg/core-js": "0.0.1-prealpha.1",
-    "@namestyorg/client-js": "0.0.1-prealpha.1",
-    "@namestyorg/client-test-env": "0.0.1-prealpha.1",
-    "@namestyorg/schema-compose": "0.0.1-prealpha.1",
-    "@namestyorg/schema-bind": "0.0.1-prealpha.1",
-    "@namestyorg/ens-plugin-js": "0.0.1-prealpha.1",
-    "@namestyorg/ipfs-plugin-js": "0.0.1-prealpha.1",
-    "@namestyorg/ethereum-plugin-js": "0.0.1-prealpha.1",
+    "@namestyorg/client-js": "^1.0.0-alpha.0",
+    "@namestyorg/client-test-env": "^1.0.0-alpha.0",
+    "@namestyorg/core-js": "^1.0.0-alpha.0",
+    "@namestyorg/ens-plugin-js": "^1.0.0-alpha.0",
+    "@namestyorg/ethereum-plugin-js": "^1.0.0-alpha.0",
+    "@namestyorg/ipfs-plugin-js": "^1.0.0-alpha.0",
+    "@namestyorg/schema-bind": "^1.0.0-alpha.0",
+    "@namestyorg/schema-compose": "^1.0.0-alpha.0",
     "assemblyscript": "0.17.13",
     "axios": "0.19.2",
     "chalk": "4.1.0",

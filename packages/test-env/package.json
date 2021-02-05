@@ -1,6 +1,6 @@
 {
   "name": "@namestyorg/client-test-env",
-  "version": "0.0.1-prealpha.1",
+  "version": "1.0.0-alpha.0",
   "license": "MIT",
   "private": true,
   "main": "index.js",
