@@ -1,6 +1,6 @@
 {
   "name": "@namestys/cli",
-  "version": "1.0.0-alpha.0",
+  "version": "2.0.0-alpha.0",
   "license": "MIT",
   "bin": {
     "w3": "bin/w3"
@@ -10,14 +10,14 @@
     "lint": "eslint --color --ext .ts src/"
   },
   "dependencies": {
-    "@namestys/client-js": "^1.0.0-alpha.0",
-    "@namestys/client-test-env": "^1.0.0-alpha.0",
-    "@namestys/core-js": "^1.0.0-alpha.0",
-    "@namestys/ens-plugin-js": "^1.0.0-alpha.0",
-    "@namestys/ethereum-plugin-js": "^1.0.0-alpha.0",
-    "@namestys/ipfs-plugin-js": "^1.0.0-alpha.0",
-    "@namestys/schema-bind": "^1.0.0-alpha.0",
-    "@namestys/schema-compose": "^1.0.0-alpha.0",
+    "@namestys/client-js": "^2.0.0-alpha.0",
+    "@namestys/client-test-env": "^2.0.0-alpha.0",
+    "@namestys/core-js": "^2.0.0-alpha.0",
+    "@namestys/ens-plugin-js": "^2.0.0-alpha.0",
+    "@namestys/ethereum-plugin-js": "^2.0.0-alpha.0",
+    "@namestys/ipfs-plugin-js": "^2.0.0-alpha.0",
+    "@namestys/schema-bind": "^2.0.0-alpha.0",
+    "@namestys/schema-compose": "^2.0.0-alpha.0",
     "assemblyscript": "0.17.13",
     "axios": "0.19.2",
     "chalk": "4.1.0",
@@ -28,7 +28,7 @@
     "js-yaml": "3.14.0",
     "spawn-command": "0.0.2-1",
     "ws": "7.3.1"
-  }, 
+  },
   "devDependencies": {
     "@types/node": "12.6.9",
     "rimraf": "3.0.2",

@@ -1,6 +1,6 @@
 {
   "name": "@namestys/core-js",
-  "version": "1.0.0-alpha.0",
+  "version": "2.0.0-alpha.0",
   "license": "MIT",
   "main": "build/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "test:watch": "jest --watch --passWithNoTests --verbose"
   },
   "dependencies": {
-    "@namestys/manifest-schema": "^1.0.0-alpha.0",
+    "@namestys/manifest-schema": "^2.0.0-alpha.0",
     "graphql": "15.3.0",
     "graphql-tag": "2.10.4",
     "js-yaml": "3.14.0",
@@ -27,5 +27,5 @@
     "ts-jest": "26.1.4",
     "ts-node": "8.10.2",
     "typescript": "3.9.7"
-  } 
+  }
 }

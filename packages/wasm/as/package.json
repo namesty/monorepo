@@ -1,6 +1,6 @@
 {
   "name": "@namestys/wasm-as",
-  "version": "1.0.0-alpha.0",
+  "version": "2.0.0-alpha.0",
   "license": "MIT",
   "main": "./assembly/index.ts",
   "scripts": {

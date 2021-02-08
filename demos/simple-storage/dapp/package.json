@@ -1,9 +1,9 @@
 {
   "name": "@namestys/example-simple-storage-dapp",
-  "version": "1.0.0-alpha.0",
+  "version": "2.0.0-alpha.0",
   "private": true,
   "dependencies": {
-    "@namestys/client-js": "^1.0.0-alpha.0",
+    "@namestys/client-js": "^2.0.0-alpha.0",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/node": "^12.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "@namestys/examples-simple-storage",
-  "version": "1.0.0-alpha.0",
+  "version": "2.0.0-alpha.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -9,9 +9,9 @@
     "test:env:down": "w3 test-env down"
   },
   "devDependencies": {
-    "@namestys/cli": "^1.0.0-alpha.0",
-    "@namestys/ethereum-plugin-js": "^1.0.0-alpha.0",
-    "@namestys/wasm-as": "^1.0.0-alpha.0",
+    "@namestys/cli": "^2.0.0-alpha.0",
+    "@namestys/ethereum-plugin-js": "^2.0.0-alpha.0",
+    "@namestys/wasm-as": "^2.0.0-alpha.0",
     "ethers": "5.0.8",
     "js-yaml": "3.14.0"
   }
