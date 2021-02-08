@@ -7,10 +7,10 @@ import chalk from "chalk";
 import { GluegunToolbox } from "gluegun";
 import gql from "graphql-tag";
 import path from "path";
-import { Uri, UriRedirect, Web3ApiClient } from "@namestyorg/client-js";
-import { EnsPlugin } from "@namestyorg/ens-plugin-js";
-import { EthereumPlugin } from "@namestyorg/ethereum-plugin-js";
-import { IpfsPlugin } from "@namestyorg/ipfs-plugin-js";
+import { Uri, UriRedirect, Web3ApiClient } from "@namestys/client-js";
+import { EnsPlugin } from "@namestys/ens-plugin-js";
+import { EthereumPlugin } from "@namestys/ethereum-plugin-js";
+import { IpfsPlugin } from "@namestys/ipfs-plugin-js";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const HELP = `

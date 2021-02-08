@@ -17,7 +17,7 @@ import {
   InvokeApiOptions,
   InvokeApiResult,
   Manifest,
-} from "@namestyorg/core-js";
+} from "@namestys/core-js";
 
 export interface ClientConfig {
   redirects: UriRedirect[];

@@ -10,7 +10,7 @@ import {
   Plugin,
   PluginModules,
   PluginManifest,
-} from "@namestyorg/core-js";
+} from "@namestys/core-js";
 
 export class HttpPlugin extends Plugin {
   constructor() {

@@ -5,7 +5,7 @@ import {
   WriteSizer,
   WriteEncoder,
   Nullable
-} from "@namestyorg/wasm-as";
+} from "@namestys/wasm-as";
 import { AnotherType } from "./";
 
 export function serializeAnotherType(type: AnotherType): ArrayBuffer {

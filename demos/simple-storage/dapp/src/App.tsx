@@ -2,12 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { Uri, UriRedirect, Web3ApiClient } from "@namestyorg/client-js";
-import { EnsPlugin } from "@namestyorg/ens-plugin-js";
-import { EthereumPlugin } from "@namestyorg/ethereum-plugin-js";
-import { IpfsPlugin } from "@namestyorg/ipfs-plugin-js";
+import { Uri, UriRedirect, Web3ApiClient } from "@namestys/client-js";
+import { EnsPlugin } from "@namestys/ens-plugin-js";
+import { EthereumPlugin } from "@namestys/ethereum-plugin-js";
+import { IpfsPlugin } from "@namestys/ipfs-plugin-js";
 
-// Needed for bundling the @namestyorg/client-js web worker
+// Needed for bundling the @namestys/client-js web worker
 process.env.WORKER_PREFIX= 'workerize-loader!';
 
 function App() {

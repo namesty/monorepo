@@ -1,7 +1,7 @@
-import { UriRedirect, Uri } from "@namestyorg/core-js";
-import { IpfsPlugin } from "@namestyorg/ipfs-plugin-js";
-import { EthereumPlugin } from "@namestyorg/ethereum-plugin-js";
-import { EnsPlugin } from "@namestyorg/ens-plugin-js";
+import { UriRedirect, Uri } from "@namestys/core-js";
+import { IpfsPlugin } from "@namestys/ipfs-plugin-js";
+import { EthereumPlugin } from "@namestys/ethereum-plugin-js";
+import { EnsPlugin } from "@namestys/ens-plugin-js";
 
 export function getDefaultRedirects(): UriRedirect[] {
   // NOTE: These are high-level primitives for core plugins,

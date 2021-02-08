@@ -1,6 +1,6 @@
 import { EnsPlugin } from "./";
 
-import { Client, PluginModule } from "@namestyorg/core-js";
+import { Client, PluginModule } from "@namestys/core-js";
 
 export const query = (ens: EnsPlugin, client: Client): PluginModule => ({
   // w3/api-resolver

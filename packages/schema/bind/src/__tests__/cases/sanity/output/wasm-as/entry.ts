@@ -1,7 +1,7 @@
 import {
   w3_add_invoke,
   w3_invoke
-} from "@namestyorg/wasm-as";
+} from "@namestys/wasm-as";
 import {
   queryMethodWrapped
 } from "./Query/wrapped";

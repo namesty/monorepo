@@ -13,7 +13,7 @@ import {
   Client,
   ApiResolver,
   InvokableModules,
-} from "@namestyorg/core-js";
+} from "@namestys/core-js";
 import path from "path";
 import * as MsgPack from "@msgpack/msgpack";
 

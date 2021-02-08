@@ -7,7 +7,7 @@ import {
   extendType,
   addFirstLast,
   toGraphQLType,
-} from "@namestyorg/schema-parse";
+} from "@namestys/schema-parse";
 import path from "path";
 import Mustache from "mustache";
 

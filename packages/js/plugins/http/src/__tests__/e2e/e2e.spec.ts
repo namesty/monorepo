@@ -1,5 +1,5 @@
-import { Web3ApiClient } from "@namestyorg/client-js"
-import { Uri } from "@namestyorg/core-js"
+import { Web3ApiClient } from "@namestys/client-js"
+import { Uri } from "@namestys/core-js"
 import { HttpPlugin } from "../..";
 import { Response } from "../../types";
 import nock from "nock"

@@ -1,7 +1,7 @@
 import { HttpPlugin } from ".";
 import { Request } from "./types";
 
-import { PluginModule } from "@namestyorg/core-js";
+import { PluginModule } from "@namestys/core-js";
 
 export const query = (http: HttpPlugin): PluginModule => ({
   get: async (input: { url: string; request: Request }) => {

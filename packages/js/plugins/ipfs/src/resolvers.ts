@@ -1,6 +1,6 @@
 import { IpfsPlugin } from "./";
 
-import { PluginModule } from "@namestyorg/core-js";
+import { PluginModule } from "@namestys/core-js";
 
 // TODO: generate types from the schema
 // https://github.com/Web3-API/prototype/issues/101

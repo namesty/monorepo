@@ -1,4 +1,4 @@
-import { PluginManifest } from "@namestyorg/core-js";
+import { PluginManifest } from "@namestys/core-js";
 
 export const manifest: PluginManifest = {
   // TODO: use the schema.graphql

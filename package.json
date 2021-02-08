@@ -13,8 +13,8 @@
     ]
   },
   "scripts": {
-    "build": "lerna run build --no-private --ignore @namestyorg/cli && yarn build:cli",
-    "build:cli": "lerna run build --scope @namestyorg/cli",
+    "build": "lerna run build --no-private --ignore @namestys/cli && yarn build:cli",
+    "build:cli": "lerna run build --scope @namestys/cli",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint -- --fix",
     "lint:ci": "lerna run lint --parallel",

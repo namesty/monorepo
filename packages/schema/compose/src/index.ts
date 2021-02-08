@@ -9,7 +9,7 @@ import {
   addFirstLast,
   toGraphQLType,
   performTransforms,
-} from "@namestyorg/schema-parse";
+} from "@namestys/schema-parse";
 
 // Remove mustache's built-in HTML escaping
 Mustache.escape = (value) => value;

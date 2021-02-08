@@ -6,7 +6,7 @@ import {
   Plugin,
   PluginManifest,
   PluginModules,
-} from "@namestyorg/core-js";
+} from "@namestys/core-js";
 import CID from "cids";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports

@@ -8,7 +8,7 @@ import {
   Plugin,
   PluginManifest,
   PluginModules,
-} from "@namestyorg/core-js";
+} from "@namestys/core-js";
 import { ethers } from "ethers";
 import { Base58 } from "@ethersproject/basex";
 import { getAddress } from "@ethersproject/address";

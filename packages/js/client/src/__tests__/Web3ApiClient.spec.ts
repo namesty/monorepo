@@ -1,9 +1,9 @@
 import { Web3ApiClient, Uri, UriRedirect } from "../";
 import { buildAndDeployApi } from "./helpers";
 
-import { EthereumPlugin } from "@namestyorg/ethereum-plugin-js";
-import { IpfsPlugin } from "@namestyorg/ipfs-plugin-js";
-import { EnsPlugin } from "@namestyorg/ens-plugin-js";
+import { EthereumPlugin } from "@namestys/ethereum-plugin-js";
+import { IpfsPlugin } from "@namestys/ipfs-plugin-js";
+import { EnsPlugin } from "@namestys/ens-plugin-js";
 import axios from "axios";
 
 jest.setTimeout(30000);

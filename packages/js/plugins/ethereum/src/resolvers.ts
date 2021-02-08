@@ -1,6 +1,6 @@
 import { EthereumPlugin } from ".";
 
-import { PluginModule } from "@namestyorg/core-js";
+import { PluginModule } from "@namestys/core-js";
 
 export const mutation = (ethereum: EthereumPlugin): PluginModule => ({
   sendTransaction: async (input: {

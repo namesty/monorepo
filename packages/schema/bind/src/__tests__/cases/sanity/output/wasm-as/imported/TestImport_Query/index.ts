@@ -1,7 +1,7 @@
 import {
   w3_subinvoke,
   Nullable
-} from "@namestyorg/wasm-as";
+} from "@namestys/wasm-as";
 import {
   serializeimportedMethodArgs,
   deserializeimportedMethodResult,

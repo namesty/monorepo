@@ -3,9 +3,9 @@ const fs = require("fs");
 const path = require("path");
 
 const generateManifest = async () => {
-  // Fetch all schemas within the @namestyorg/manifest-schema/formats directory
+  // Fetch all schemas within the @namestys/manifest-schema/formats directory
   const formatsDir = path.join(
-    path.dirname(require.resolve("@namestyorg/manifest-schema")),
+    path.dirname(require.resolve("@namestys/manifest-schema")),
     "/formats"
   );
   const formatFiles = fs.readdirSync(formatsDir);

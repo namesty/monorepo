@@ -1,4 +1,4 @@
-import { Nullable } from "@namestyorg/wasm-as";
+import { Nullable } from "@namestys/wasm-as";
 import {
   serializeAnotherType,
   deserializeAnotherType

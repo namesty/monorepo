@@ -27,7 +27,7 @@ import {
   populatePropertyType,
   visitImportedQueryDefinition,
   visitImportedObjectDefinition,
-} from "@namestyorg/schema-parse";
+} from "@namestys/schema-parse";
 import Mustache from "mustache";
 
 // Remove mustache's built-in HTML escaping

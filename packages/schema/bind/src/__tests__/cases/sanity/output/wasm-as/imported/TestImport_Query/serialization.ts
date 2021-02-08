@@ -4,7 +4,7 @@ import {
   WriteSizer,
   WriteEncoder,
   ReadDecoder
-} from "@namestyorg/wasm-as";
+} from "@namestys/wasm-as";
 
 export class Input_importedMethod {
   str: string;

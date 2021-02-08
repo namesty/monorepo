@@ -1,6 +1,6 @@
 {
-  "name": "@namestyorg/client-js",
-  "version": "1.0.2-alpha.0",
+  "name": "@namestys/client-js",
+  "version": "1.0.0-alpha.0",
   "license": "MIT",
   "main": "build/index.js",
   "scripts": {
@@ -14,17 +14,17 @@
   },
   "dependencies": {
     "@msgpack/msgpack": "2.3.0",
-    "@namestyorg/core-js": "^1.0.0-alpha.0",
-    "@namestyorg/ens-plugin-js": "^1.0.0-alpha.0",
-    "@namestyorg/ethereum-plugin-js": "^1.0.0-alpha.0",
-    "@namestyorg/ipfs-plugin-js": "^1.0.0-alpha.0",
-    "@namestyorg/schema-parse": "^1.0.0-alpha.0",
+    "@namestys/core-js": "^1.0.0-alpha.0",
+    "@namestys/ens-plugin-js": "^1.0.0-alpha.0",
+    "@namestys/ethereum-plugin-js": "^1.0.0-alpha.0",
+    "@namestys/ipfs-plugin-js": "^1.0.0-alpha.0",
+    "@namestys/schema-parse": "^1.0.0-alpha.0",
     "graphql": "^15.4.0",
     "js-yaml": "3.14.0",
     "web-worker": "1.0.0"
   },
   "devDependencies": {
-    "@namestyorg/cli": "^1.0.2-alpha.0",
+    "@namestys/cli": "^1.0.0-alpha.0",
     "@types/jest": "26.0.8",
     "@types/js-yaml": "3.11.1",
     "@types/semver": "^7.3.4",
@@ -35,5 +35,5 @@
     "ts-jest": "26.1.4",
     "ts-node": "8.10.2",
     "typescript": "3.9.7"
-  }
+  } 
 }

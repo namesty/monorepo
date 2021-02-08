@@ -1,6 +1,6 @@
 import { GraphNodePlugin } from ".";
 
-import { PluginModule } from "@namestyorg/core-js";
+import { PluginModule } from "@namestys/core-js";
 
 export const query = (graphnode: GraphNodePlugin): PluginModule => ({
   querySubgraph: async (input: { subgraphId: string; query: string }) => {
